@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f7f4ed;
+  --foreground: #191919;
+  --font-century-old-style: "CenturyOldStyleStd", Arial, Helvetica, sans-serif;
+  --font-sebino-regular: "SebinoRegular", Arial, Helvetica, sans-serif;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: #f7f4ed;
+    --foreground: #191919;
+  }
+}
+
+@font-face {
+  font-family: "CenturyOldStyleStd";
+  src: url("fonts/CenturyATFOldStyleBQ-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: "CenturyOldStyleStd", Arial, Helvetica, sans-serif;
+}
+
+body {
+  cursor: url("../public/assets/woodstockresized.png"), auto;
+}
