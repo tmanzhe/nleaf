@@ -1,5 +1,6 @@
 "use client";
 
+import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import snoopyImage from "@/public/assets/snoopy.png";
@@ -17,33 +18,66 @@ export default function Home() {
               loaded ? "opacity-100" : "opacity-0"
           }`}
       >
-        <div
-            className="flex flex-wrap items-start space-x-10 ml-10"
-            style={{ animationDelay: "0.5s" }}
-        >
-          {/* Text Column */}
-          <div className="flex flex-col mt-10 sm:mt-28 text-center sm:text-left">
-            <h1 className="text-4xl sm:text-6xl md:text-8xl">
-              <span>Hello,</span>
-              <br />
-              <span>I&apos;m Truman</span>
-            </h1>
-            <p className="mt-3 sm:mt-5 text-sm sm:text-lg max-w-lg">
-              A second-year student pursuing a double degree at York for CS and MMGT at Schulich
-            </p>
+        {/* Signed-In Home Page */}
+        <SignedIn>
+          <div
+              className="flex flex-wrap items-start space-x-10 ml-10"
+              style={{ animationDelay: "0.5s" }}
+          >
+            {/* Text Column */}
+            <div className="flex flex-col mt-10 sm:mt-28 text-center sm:text-left">
+              <h1 className="text-4xl sm:text-6xl md:text-8xl">
+                Hi!
+                <br/>
+                welcome back
+              </h1>
+              <p className="mt-3 sm:mt-5 text-sm sm:text-lg max-w-lg">
+                This is your personalized dashboard. Explore your todos, tracker,
+                and calendar.
+              </p>
+            </div>
+            {/* Image Column */}
+            <div className="flex-shrink-0 mt-5 sm:mt-0">
+              <Image
+                  src={snoopyImage}
+                  alt="Snoopy"
+                  width={300}
+                  height={300}
+                  className="sm:w-[400px] sm:h-[400px] md:w-[600px] md:h-[600px]"
+              />
+            </div>
           </div>
+        </SignedIn>
 
-          {/* Image Column */}
-          <div className="flex-shrink-0 mt-5 sm:mt-0">
-            <Image
-                src={snoopyImage}
-                alt="Snoopy"
-                width={300}
-                height={300}
-                className="sm:w-[400px] sm:h-[400px] md:w-[600px] md:h-[600px]"
-            />
+        {/* Signed-Out Home Page */}
+        <SignedOut>
+          <div
+              className="flex flex-wrap items-start space-x-10 ml-10"
+              style={{ animationDelay: "0.5s" }}
+          >
+            {/* Text Column */}
+            <div className="flex flex-col mt-10 sm:mt-28 text-center sm:text-left">
+              <h1 className="text-4xl sm:text-6xl md:text-8xl">
+                <span>Welcome,</span>
+                <br />
+                <span>Sign up to nleaf!</span>
+              </h1>
+              <p className="mt-3 sm:mt-5 text-sm sm:text-lg max-w-lg">
+                Sign up to access your calendar, todo tracker, and much more!
+              </p>
+            </div>
+            {/* Image Column */}
+            <div className="flex-shrink-0 mt-5 sm:mt-0">
+              <Image
+                  src={snoopyImage}
+                  alt="Snoopy"
+                  width={300}
+                  height={300}
+                  className="sm:w-[400px] sm:h-[400px] md:w-[600px] md:h-[600px]"
+              />
+            </div>
           </div>
-        </div>
+        </SignedOut>
       </main>
   );
 }
